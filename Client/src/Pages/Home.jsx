@@ -19,7 +19,7 @@ const Home = () => {
   const [listening, setListening] = useState(false);
   const isSpeaking = useRef(false);
   const recognitionRef = useRef(null);
-  const isRecognizingRef = useRef(false);
+  const isRecognizingRef = useRef(false); 
   const synth = window.speechSynthesis;
 
   const handleLogout = async () => {
