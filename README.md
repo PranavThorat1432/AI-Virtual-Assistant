@@ -28,11 +28,17 @@ The assistant understands **natural language in multiple languages**, determines
 ## 🚀 What Makes This Project Stand Out
 
 ✔ Not just a chatbot — a **command-driven AI assistant**
+
 ✔ **Intent classification system** (Google, YouTube, system actions, time, weather, etc.)
+
 ✔ **Multilingual input & response support**
+
 ✔ **Strict JSON-based AI responses** for predictable frontend handling
+
 ✔ **Voice-friendly responses** optimized for TTS
+
 ✔ Clean **frontend–backend separation**
+
 ✔ Production-ready architecture
 
 ---
@@ -99,6 +105,19 @@ The assistant understands **natural language in multiple languages**, determines
 * **Bcrypt**
 * **Cloudinary**
 * **Google Gemini AI**
+
+---
+
+# 📸 **Preview**
+
+
+<div align="center">
+
+### 🏠 Home 
+
+  ![Home Screenshot](https://github.com/user-attachments/assets/181aa3d3-e1ef-4815-a254-10319777ac1d)
+
+</div>
 
 ---
 
@@ -188,7 +207,6 @@ Open: **[http://localhost:5173](http://localhost:5173)**
 
 ## 🔮 Future Enhancements
 
-* Wake-word detection (hands-free activation)
 * Conversation memory & history
 * AI personality modes (formal, friendly, humorous)
 * Voice-to-voice conversations
@@ -200,22 +218,29 @@ Open: **[http://localhost:5173](http://localhost:5173)**
 ## 🤝 Contributing
 
 Contributions are welcome.
-If you have ideas to improve intelligence, UX, or integrations—feel free to open an issue or submit a pull request.
+If you have ideas to improve intelligence, UX, or integrations, feel free to open an issue or submit a pull request.
 
 ---
 
 ## 📄 License
 
 This project is licensed under the **MIT License**.
-See the `LICENSE` file for full details.
+See the [LICENSE](./LICENSE) file for full details.
 
 ---
 
 ## 📬 Contact
 
-**Pranav Thorat**
-GitHub: [https://github.com/PranavThorat1432](https://github.com/PranavThorat1432)
-LinkedIn: *(add your profile)*
+👤 **Pranav Thorat**
+
+| Platform              | Link                                                          |
+| --------------------- | ------------------------------------------------------------- |
+| 🌐 **Live Demo**      | [View Now]()                        |
+| 🧑‍💻 **GitHub Repo** | [View Code](https://github.com/PranavThorat1432/AI-Virtual-Assistant.git) |
+| 💼 **LinkedIn**       | [Connect with Me](https://www.linkedin.com/in/curiouspranavthorat/)       |
+| 📩 **Email**          | [pranavthorat95@gmail.com](mailto:pranavthorat95@gmail.com)   |
+
+
 
 ---
 
@@ -226,17 +251,3 @@ Built with focus on **real-world AI assistant architecture**
 
 </div>
 
----
-
-### Brutally honest take (since you prefer that):
-
-This README now **looks like something a startup or product team would publish**, not a tutorial project.
-Your **intent-based JSON design** is the strongest part—this README highlights that properly.
-
-If you want next:
-
-* A **demo GIF section**
-* A **“How intent detection works” diagram**
-* A **Resume-ready one-liner**
-
-Just say the word.
