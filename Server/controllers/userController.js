@@ -60,45 +60,69 @@ export const updateAssistant = async (req, res) => {
 
 export const askToAssistant = async (req, res) => {
     try {
-        const {command} = req.body;
+        const { command } = req.body;
+
         const user = await User.findById(req.userId);
-        user.history.push(command);
-        user.save();
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        // keep user history but don't let it crash the request
+        try {
+            user.history.push(command);
+            await user.save();
+        } catch (historyErr) {
+            console.warn('history save failed', historyErr);
+        }
+
         const userName = user.name;
         const assistantName = user.assistantName;
         const result = await geminiResponse(command, assistantName, userName);
 
-        const jsonMatch = result.match(/{[\s\S]*}/);
-        if(!jsonMatch) {
-            return res.status(400).json({response: "Sorry, I can't understand!"});
+        if (!result || typeof result !== 'string') {
+            return res.status(502).json({
+                success: false,
+                message: 'Assistant service unavailable. Please try again.'
+            });
         }
 
-        const gemResult = JSON.parse(jsonMatch[0]);
+        const jsonMatch = result.match(/{[\s\S]*}/);
+        if (!jsonMatch) {
+            return res.status(400).json({ success: false, response: "Sorry, I can't understand!" });
+        }
+
+        let gemResult;
+        try {
+            gemResult = JSON.parse(jsonMatch[0]);
+        } catch (parseErr) {
+            return res.status(400).json({ success: false, response: "Sorry, I can't understand that command." });
+        }
+
         const type = gemResult.type;
 
-        switch(type) {
-            case 'get_date' : 
+        switch (type) {
+            case 'get_date':
                 return res.status(200).json({
                     type,
                     userInput: gemResult.userInput,
                     response: `Current Date is ${moment().format('YYYY-MM-DD')}`
                 });
 
-            case 'get_time' : 
+            case 'get_time':
                 return res.status(200).json({
                     type,
                     userInput: gemResult.userInput,
                     response: `Current Time is ${moment().format('hh:mm:A')}`
                 });
 
-            case 'get_day' : 
+            case 'get_day':
                 return res.status(200).json({
                     type,
                     userInput: gemResult.userInput,
                     response: `Today is ${moment().format('dddd')}`
                 });
 
-            case 'get_month' : 
+            case 'get_month':
                 return res.status(200).json({
                     type,
                     userInput: gemResult.userInput,
@@ -119,16 +143,15 @@ export const askToAssistant = async (req, res) => {
                     response: gemResult.response
                 });
 
-            default: 
-                return res.status(400).json({response: "Sorry, I can't understand that command."});
+            default:
+                return res.status(400).json({ success: false, response: "Sorry, I can't understand that command." });
         }
 
-        
-
     } catch (error) {
+        console.error('Ask To Assistant Error:', error);
         return res.status(500).json({
-            success: true,
-            message: `Ask To Assistant Error: ${erorr}`
+            success: false,
+            message: 'Ask To Assistant Error'
         });
     }
 };

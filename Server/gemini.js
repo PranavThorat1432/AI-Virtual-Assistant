@@ -3,6 +3,9 @@ import axios from 'axios';
 const geminiResponse = async (command, assistantName, userName) => {
     try {
         const api_url = process.env.GEMINI_API_URL;
+        if (!api_url) {
+            throw new Error('GEMINI_API_URL is not configured');
+        }
 
         const prompt = `You are a voice-enabled virtual assistant named "${assistantName}", created by "${userName}".  
         You must always respond ONLY in a JSON object (no extra text, no markdown).
@@ -56,10 +59,15 @@ const geminiResponse = async (command, assistantName, userName) => {
             ]
         });
 
-        return result.data.candidates[0].content.parts[0].text;
+        const candidate = result?.data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (!candidate) {
+            throw new Error('Empty response from Gemini');
+        }
+        return candidate;
         
     } catch (error) {
-        console.log(error);
+        console.error('geminiResponse error:', error?.response?.data || error.message || error);
+        return null;
     }
 };
 
