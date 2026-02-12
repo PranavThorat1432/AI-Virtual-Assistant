@@ -235,7 +235,7 @@ See the [LICENSE](./LICENSE) file for full details.
 
 | Platform              | Link                                                          |
 | --------------------- | ------------------------------------------------------------- |
-| 🌐 **Live Demo**      | [View Now]()                        |
+| 🌐 **Live Demo**      | [View Now](https://ai-virtual-assistant-bvgv.onrender.com/login)                        |
 | 🧑‍💻 **GitHub Repo** | [View Code](https://github.com/PranavThorat1432/AI-Virtual-Assistant.git) |
 | 💼 **LinkedIn**       | [Connect with Me](https://www.linkedin.com/in/curiouspranavthorat/)       |
 | 📩 **Email**          | [pranavthorat95@gmail.com](mailto:pranavthorat95@gmail.com)   |
